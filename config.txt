@@ -10,7 +10,7 @@ equil=1000
 # The number of simulation steps for each replica.
 n_steps=10000
 
-# The interval for output, in steps.
+# The interval between replica exchange attempts.
 interval=100
 
 # The key file for each replica
