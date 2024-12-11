@@ -1,0 +1,29 @@
+# Configuration for Replica Exchange Molecular Dynamics Setup
+# Temperatures should be a comma-separated list of values in Kelvin.
+temperatures=300,305,308,312
+
+# Equilibration (optional)
+# this will run a simulation for the specified number of steps without using mdi
+# for each replica
+equil=1000
+
+# The number of simulation steps for each replica.
+n_steps=10000
+
+# The interval for output, in steps.
+interval=100
+
+# The key file for each replica
+tinker_key=tinker.key
+
+# The starting configuration for each replica
+tinker_xyz=tinker.xyz
+
+# The prm file to use
+tinker_prm=amoebabio18.prm
+
+# Path to the Apptainer image for the engine.
+engine_image=~/apptainer_images/mdi_tinker9_cuda121.sif
+
+# Path to the Apptainer image for the driver.
+driver_image=~/apptainer_images/repex_1210.sif
