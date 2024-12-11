@@ -26,4 +26,4 @@ tinker_prm=amoebabio18.prm
 engine_image=~/apptainer_images/mdi_tinker9_cuda121.sif
 
 # Path to the Apptainer image for the driver.
-driver_image=~/apptainer_images/repex_1210.sif
+driver_image=~/apptainer_images/repex_latest.sif
