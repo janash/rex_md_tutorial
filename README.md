@@ -1,6 +1,18 @@
 # Tutorial
 
-This is a tutorial on how to use the `mdi_rexmd` package.
+This is a tutorial on how to use the `mdi_rexmd` package with containers (Apptainer).
+`mdi_rexmd` is a package that allows users to run replica exchange molecular dynamics (REMD) simulations using the MolSSI Driver Interface.
+It is still in the early stages of development an is still being validated!
+The `mdi_rexmd` driver is agnostic to the MD engine used, and should be useable with any MDI-enabled molecular dyanmics engine.
+
+This tutorial focuses on running REMD simulations with Tinker 9 using the MDI interface.
+The steps are specifically for the Virginia Tech compute cluster, Infer. 
+However, the general steps should be applicable to Linux systems with the proper software (CUDA 12.1, Apptainer, etc.) installed.
+
+This tutorial uses the MDI engine, GPU-enabled Tinker9, in an Apptainer container and a separate Apptainer container for the MDI driver.
+The containers communicate with each other using the MPI.
+
+Tinker 9 is compiled with CUDA 12.1 and is available in the container `mdi_tinker9_cuda121.sif` (directions to download this container are below).
 
 This is a tutorial for users on Infer - the Virgina Tech compute cluster.
 
@@ -61,13 +73,13 @@ temperatures=300,305,308,312
 # Equilibration (optional)
 # this will run a simulation for the specified number of steps without using mdi
 # for each replica
-equil=1000
+equil=10000
 
 # The number of simulation steps for each replica.
-n_steps=10000
+n_steps=100000
 
-# The interval for output, in steps.
-interval=100
+# The number of timesteps between replica exchange attempts.
+exchange_interval=1000
 
 # The key file for each replica
 tinker_key=tinker.key
@@ -77,6 +89,15 @@ tinker_xyz=tinker.xyz
 
 # The prm file to use
 tinker_prm=amoebabio18.prm
+
+# The timestep in femtoseconds
+timestep=1.0
+
+# The trajectory save frequency in picoseconds
+save_interval=1
+
+# The ensemble in Tinker
+ensemble=4
 
 # Path to the Apptainer image for the engine.
 engine_image=~/apptainer_containers/mdi_tinker9_cuda121.sif
