@@ -21,6 +21,9 @@ Check to make sure you have the containers. When you type `ls`, you should see t
 
 Step 1: Load required modules
 
+Thiese instructions are for Infer, the Virginia Tech compute cluster.
+If you are using a different cluster, you may need to load different modules, or make sure packages are installed in a different way.
+
 ```bash
 module load shared
 module load mpich/ge/gcc/64/3.3.2
@@ -39,14 +42,16 @@ pip install -e .
 ```
 
 ## Running Replica Exchange
-Navigate back to your home directory. Create a new directory called `repex_tutorial` and navigate into it.
+Navigate back to your home directory. 
+Now, we will clone this repository
 
 ```bash
-mkdir repex_tutorial
-cd repex_tutorial
+git clone https://github.com/janash/rex_md_tutorial.git
+cd rex_md_tutorial
 ```
 
-Create a text file called `config.txt` with the following contents:
+This folder contains a file called `config.txt`. 
+This file contains the configuration for the replica exchange simulation, and is shown below:
 
 ```bash
 # Configuration for Replica Exchange Molecular Dynamics Setup
@@ -102,6 +107,12 @@ n_steps=10000
 interval=100
 ```
 
+While the temperatures are given at the top:
+```
+# Temperatures should be a comma-separated list of values in Kelvin.
+temperatures=300,305,308,312
+```
+
 Running the previous bash command will generate a number of scripts in the current directory.
 
 The most important script is called `run_repex.sh`. This is the "entry point" script that you will use to start the replica exchange simulation.
@@ -111,10 +122,9 @@ If you are running on a local cluster without a queueing system, you can run the
 ```bash
 bash run_repex.sh
 ```
-
 However, if you are running on HPC, like Infer, you should insert this script into a job submission script. 
 
-Note that you should fill in the appropriate account and partition information for your job.
+Note that you should fill in the appropriate account and partition information for your job and that you will have to load the Apptainer module in the job submission script.
 The compilation of Tinker 9 should work on V100 GPUs and T4 GPUs, but not on P100 GPUs.
 
 ```bash
