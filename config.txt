@@ -32,7 +32,7 @@ save_interval=1
 ensemble=4
 
 # Path to the Apptainer image for the engine.
-engine_image=/media/chemai/jessica/mdi-apptainer/containers/mdi_tinker9_cuda121.sif
+engine_image=~/apptainer_images/mdi_tinker9_cuda121.sif
 
 # Path to the Apptainer image for the driver.
-driver_image=/media/chemai/jessica/mdi-apptainer/containers/repex_latest.sif
+driver_image=~/apptainer_images/repex_latest.sif
