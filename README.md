@@ -24,8 +24,8 @@ The containers are available on MolSSI's large file server.
 You should create a directory to store the containers in your home directory.
 
 ```bash
-mkdir -p apptainer_images
-cd apptainer_images
+mkdir -p apptainer_containers
+cd apptainer_containers
 wget https://pneuma.chem.vt.edu/apptainer/mdi_tinker9_cuda121.sif
 wget https://pneuma.chem.vt.edu/apptainer/repex_latest.sif
 ``` 
